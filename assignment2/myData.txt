@@ -1,0 +1,12 @@
+{
+    "id": "562b0114f7bfeed30fa660ff",
+    "name": "Marshall Guo",
+    "address": "Warm Springs Blvd.",
+    "city": "Fremont",
+    "state": "CA",
+    "zip": "94539",
+    "coordinate": {
+        "lat": 37.4828638,
+        "lng": -121.9253956
+    }
+}
