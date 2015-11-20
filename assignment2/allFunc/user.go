@@ -1,7 +1,7 @@
 package allFunc
 
 import (
-	"assignment2/models"
+	"assignment2/structure"
 	"encoding/json"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
