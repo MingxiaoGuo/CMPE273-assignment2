@@ -30,7 +30,7 @@ func (uc UserController) GetLocations(w http.ResponseWriter, r *http.Request, p 
 		return
 	}
 	objectId := bson.ObjectIdHex(id)
-	location := models.Location{}
+	location := structure.Location{}
 	if err := uc.session.DB("cmpe273_project").C("hello").FindId(objectId).One(&location); err != nil {
 		w.WriteHeader(404)
 		return
@@ -44,7 +44,7 @@ func (uc UserController) GetLocations(w http.ResponseWriter, r *http.Request, p 
 }
 
 func (userCon UserController) CreateLocations(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	location := models.Location{}
+	location := structure.Location{}
 
 	json.NewDecoder(r.Body).Decode(&location)
 	str := getURL(location.Address, location.City, location.State)
@@ -69,7 +69,7 @@ func (uc UserController) UpdateLocations(w http.ResponseWriter, r *http.Request,
 	}
 
 	oid := bson.ObjectIdHex(id)
-	l := models.Location{}
+	l := structure.Location{}
 	json.NewDecoder(r.Body).Decode(&l)
 	str := getURL(l.Address, l.City, l.State)
 	getLocation(&l, str)
@@ -133,7 +133,7 @@ func getURL(address string, city string, state string) string {
 	return res
 }
 
-func getLocation(l *models.Location, str string) {
+func getLocation(l *structure.Location, str string) {
 	urlPath := "http://maps.google.com/maps/api/geocode/json?address="
 	urlPath += str
 	urlPath += "&sensor=false"
