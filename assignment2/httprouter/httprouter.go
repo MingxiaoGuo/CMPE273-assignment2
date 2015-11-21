@@ -1,7 +1,7 @@
 package main
 
 import (
-	"assignment2/controllers"
+	"assignment2/allFunc"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"gopkg.in/mgo.v2"
@@ -18,7 +18,7 @@ func getSession() *mgo.Session {
 
 func main() {
 	mux := httprouter.New()
-	helper := controllers.NewUserController(getSession())
+	helper := allFunce.NewUserController(getSession())
 	mux.GET("/locations/:id", helper.GetLocations)
 	mux.POST("/locations/", helper.CreateLocations)
 	mux.DELETE("/locations/:id", helper.RemoveLocations)
